@@ -15,9 +15,9 @@ export default function Home() {
         <div className="flex-1 max-w-xl">
           <p className="text-accent-light text-lg mb-2">Hola, soy</p>
           <h1 className="text-5xl lg:text-7xl font-bold mb-4">
-            Jhojan
+            Persona
             <br />
-            Aragón
+            Astronauta
           </h1>
           <h2 className="text-2xl lg:text-3xl text-accent-purple font-semibold mb-6">
             Desarrollador de Software
