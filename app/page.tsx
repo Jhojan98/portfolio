@@ -42,12 +42,13 @@ export default function Home() {
 
         <div className="flex-1 flex justify-center lg:justify-end mt-12 lg:mt-0">
           <div className="relative w-[400px] h-[400px] lg:w-[500px] lg:h-[500px]">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-purple/20 to-transparent flex items-center justify-center border border-white/10">
-              <div className="text-center text-gray-500">
-                <p className="text-sm">Imagen del astronauta</p>
-                <p className="text-xs mt-1">500x500px</p>
-              </div>
-            </div>
+            <Image
+              src="/Astronaut.png"
+              alt="Astronauta trabajando en la luna"
+              fill
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
       </main>

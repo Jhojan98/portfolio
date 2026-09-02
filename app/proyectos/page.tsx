@@ -4,7 +4,7 @@ import { Rocket } from "lucide-react";
 import { useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 
-const categories = ["Todos", "Web", "Backend", "IA", "Mobile"];
+const categories = ["Todos", "Web", "Backend", "IA", "Mobile", "Ejemplo"];
 
 const projects = [
   {
@@ -18,7 +18,7 @@ const projects = [
     title: "UrbanRide API",
     description:
       "Microservicios para la gestión de transporte urbano y usuarios.",
-    tags: ["Java", "Spring Boot", "PostgreSQL"],
+    tags: ["Java", "Spring Boot", "PostgreSQL", "Ejemplo"],
     category: "Backend",
   },
   {
@@ -27,6 +27,13 @@ const projects = [
       "Plataforma de reseñas y comentarios para experiencias universitarias.",
     tags: ["Go", "GoAdmin", "PostgreSQL"],
     category: "Web",
+  },
+  {
+    title: "SmartHome App",
+    description:
+      "Aplicación móvil para controlar dispositivos inteligentes en el hogar.",
+    tags: ["React Native", "Firebase", "Ejemplo"],
+    category: "Ejemplo",
   },
 ];
 
