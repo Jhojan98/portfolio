@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-space-dark: #0f0a1a;
+  --color-space-purple: #1a1030;
+  --color-accent-purple: #8b5cf6;
+  --color-accent-light: #a78bfa;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-space-dark);
+  color: #ffffff;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+.stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #ffffff, transparent),
+    radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 250px 20px, #ffffff, transparent),
+    radial-gradient(2px 2px at 300px 50px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 350px 90px, #ffffff, transparent),
+    radial-gradient(1px 1px at 400px 30px, rgba(255,255,255,0.8), transparent);
+  background-size: 450px 100px;
+  animation: twinkle 8s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
