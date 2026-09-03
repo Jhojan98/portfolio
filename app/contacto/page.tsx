@@ -35,10 +35,10 @@ export default function ContactoPage() {
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           <div className="flex-1">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-2">Hablemos</h1>
-            <div className="w-16 h-1 bg-accent-purple rounded-full mb-8" />
+            <h1 className="text-4xl lg:text-5xl font-bold mb-2 text-[#14315C] dark:text-white">Hablemos</h1>
+            <div className="w-16 h-1 bg-[#14315C] dark:bg-white rounded-full mb-8" />
 
-            <p className="text-gray-300 leading-relaxed mb-10">
+            <p className="text-[#14315C]/80 dark:text-gray-300 leading-relaxed mb-10">
               ¿Tienes un proyecto en mente o quieres colaborar conmigo?
               ¡Me encantaría saber de ti!
             </p>
@@ -50,9 +50,9 @@ export default function ContactoPage() {
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 text-gray-300 hover:text-accent-purple transition-colors group"
+                  className="flex items-center gap-4 text-[#14315C]/80 dark:text-gray-300 hover:text-[#14315C] dark:hover:text-white transition-colors group"
                 >
-                  <item.icon className="w-5 h-5 text-gray-500 group-hover:text-accent-purple transition-colors" />
+                  <item.icon className="w-5 h-5 text-[#14315C]/50 dark:text-gray-500 group-hover:text-[#14315C] dark:group-hover:text-white transition-colors" />
                   <span>{item.text}</span>
                 </a>
               ))}
@@ -65,7 +65,7 @@ export default function ContactoPage() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-12 h-12 rounded-full border border-white/10 text-gray-400 hover:text-accent-purple hover:border-accent-purple transition-all"
+                  className="flex items-center justify-center w-12 h-12 rounded-full border border-[#14315C]/20 dark:border-white/10 text-[#14315C] dark:text-gray-400 hover:text-[#1E4A8A] dark:hover:text-white hover:border-[#14315C] dark:hover:border-white transition-all"
                   aria-label={link.label}
                 >
                   <link.icon className="w-5 h-5" />
@@ -76,8 +76,8 @@ export default function ContactoPage() {
 
           <div className="flex-1 flex justify-center">
             <div className="relative w-[350px] h-[400px]">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent-purple/10 to-transparent flex items-center justify-center border border-white/5">
-                <div className="text-center text-gray-500">
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#14315C]/10 to-transparent dark:from-white/10 dark:to-transparent flex items-center justify-center border border-[#14315C]/10 dark:border-white/10">
+                <div className="text-center text-[#14315C]/50 dark:text-gray-500">
                   <p className="text-sm">Imagen del astronauta</p>
                   <p className="text-xs mt-1">350x400px</p>
                 </div>

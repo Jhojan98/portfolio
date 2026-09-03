@@ -1,20 +1,122 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
-  --color-space-dark: #0f0a1a;
-  --color-space-purple: #1a1030;
-  --color-accent-purple: #8b5cf6;
-  --color-accent-light: #a78bfa;
+  /* Ártico Polar (claro) */
+  --color-navy: #14315c;
+  --color-navy-light: #1e4a8a;
+  --color-arctic-bg: #e9f3fb;
+  --color-arctic-border: #c9d9e9;
+  /* Nebulosa de Carbón (oscuro) */
+  --color-carbon: #0a0a0b;
+  --color-carbon-soft: #141416;
+  /* Compatibilidad con clases antiguas */
+  --color-space-dark: #0a0a0b;
+  --color-space-purple: #141416;
+  --color-accent-purple: #14315c;
+  --color-accent-light: #1e4a8a;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-body {
-  background: var(--color-space-dark);
-  color: #ffffff;
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+body {
+  /* 1. INICIO - VARIANT E - ÁRTICO POLAR (por defecto) */
+  background: linear-gradient(180deg, #d9eaf8 0%, #eaf4fc 35%, #ffffff 100%);
+  background-attachment: fixed;
+  color: #14315c;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  /* 1. VARIACION Q - ESPACIO OBSCURO Y NEBULOSA DE CARBON */
+  background: #060607;
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+/* ============ CAPA 0: nebulosa de polvo cósmico difuso ============
+   Humo gris/blanco irregular, con zonas densas y tenues.
+   Solo visible en modo oscuro; en claro es neblina ártica tenue. */
+.nebula {
+  position: fixed;
+  inset: -12%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 1;
+}
+
+.nebula::before,
+.nebula::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  will-change: transform, opacity;
+}
+
+/* Manto amplio y tenue — neblina azul ártica */
+.nebula::before {
+  background-image:
+    radial-gradient(ellipse 46% 32% at 18% 22%, rgba(127, 178, 229, 0.22), transparent 70%),
+    radial-gradient(ellipse 38% 28% at 38% 36%, rgba(91, 147, 209, 0.16), transparent 70%),
+    radial-gradient(ellipse 52% 36% at 66% 16%, rgba(168, 200, 232, 0.24), transparent 70%),
+    radial-gradient(ellipse 42% 30% at 80% 46%, rgba(91, 147, 209, 0.14), transparent 70%),
+    radial-gradient(ellipse 56% 40% at 44% 66%, rgba(127, 178, 229, 0.18), transparent 72%),
+    radial-gradient(ellipse 32% 26% at 12% 72%, rgba(70, 120, 180, 0.14), transparent 70%),
+    radial-gradient(ellipse 36% 30% at 86% 80%, rgba(168, 200, 232, 0.2), transparent 70%),
+    radial-gradient(ellipse 26% 20% at 56% 88%, rgba(91, 147, 209, 0.12), transparent 70%);
+  animation: nebula-drift-a 34s ease-in-out infinite alternate;
+}
+
+/* Núcleos irregulares más densos — bruma azul concentrada */
+.nebula::after {
+  background-image:
+    radial-gradient(ellipse 22% 16% at 28% 30%, rgba(91, 147, 209, 0.2), transparent 70%),
+    radial-gradient(ellipse 18% 14% at 58% 24%, rgba(127, 178, 229, 0.18), transparent 70%),
+    radial-gradient(ellipse 24% 18% at 72% 55%, rgba(70, 120, 180, 0.16), transparent 70%),
+    radial-gradient(ellipse 20% 15% at 40% 72%, rgba(168, 200, 232, 0.22), transparent 70%),
+    radial-gradient(ellipse 16% 12% at 15% 55%, rgba(91, 147, 209, 0.16), transparent 70%),
+    radial-gradient(ellipse 14% 11% at 88% 32%, rgba(127, 178, 229, 0.16), transparent 70%);
+  animation: nebula-drift-b 46s ease-in-out infinite alternate;
+}
+
+.dark .nebula {
+  opacity: 1;
+}
+
+/* Manto amplio: polvo gris/blanco disperso */
+.dark .nebula::before {
+  background-image:
+    radial-gradient(ellipse 46% 32% at 18% 22%, rgba(205, 205, 215, 0.1), transparent 70%),
+    radial-gradient(ellipse 38% 28% at 38% 36%, rgba(175, 175, 185, 0.08), transparent 70%),
+    radial-gradient(ellipse 52% 36% at 66% 16%, rgba(215, 215, 225, 0.07), transparent 70%),
+    radial-gradient(ellipse 42% 30% at 80% 46%, rgba(160, 160, 172, 0.09), transparent 70%),
+    radial-gradient(ellipse 56% 40% at 44% 66%, rgba(195, 195, 205, 0.06), transparent 72%),
+    radial-gradient(ellipse 32% 26% at 12% 72%, rgba(185, 185, 195, 0.08), transparent 70%),
+    radial-gradient(ellipse 36% 30% at 86% 80%, rgba(205, 205, 215, 0.07), transparent 70%),
+    radial-gradient(ellipse 26% 20% at 56% 88%, rgba(175, 175, 185, 0.06), transparent 70%);
+}
+
+/* Núcleos densos: zonas de mayor concentración */
+.dark .nebula::after {
+  background-image:
+    radial-gradient(ellipse 22% 16% at 28% 30%, rgba(220, 220, 230, 0.11), transparent 70%),
+    radial-gradient(ellipse 18% 14% at 58% 24%, rgba(200, 200, 212, 0.09), transparent 70%),
+    radial-gradient(ellipse 24% 18% at 72% 55%, rgba(210, 210, 222, 0.1), transparent 70%),
+    radial-gradient(ellipse 20% 15% at 40% 72%, rgba(190, 190, 202, 0.08), transparent 70%),
+    radial-gradient(ellipse 16% 12% at 15% 55%, rgba(205, 205, 216, 0.09), transparent 70%),
+    radial-gradient(ellipse 14% 11% at 88% 32%, rgba(215, 215, 226, 0.08), transparent 70%);
+}
+
+/* ============ CAPA 1: estrellas base (distribución irregular y natural) ============
+   Dos grupos con mosaicos de distinto tamaño (977px y 641px) y desfase:
+   el patrón combinado casi no se repite y evita el efecto rejilla. */
 .stars {
   position: fixed;
   top: 0;
@@ -22,29 +124,261 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, #ffffff, transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 90px 40px, #ffffff, transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
-    radial-gradient(2px 2px at 160px 30px, #ffffff, transparent),
-    radial-gradient(1px 1px at 200px 60px, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 250px 20px, #ffffff, transparent),
-    radial-gradient(2px 2px at 300px 50px, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 350px 90px, #ffffff, transparent),
-    radial-gradient(1px 1px at 400px 30px, rgba(255,255,255,0.8), transparent);
-  background-size: 450px 100px;
-  animation: twinkle 8s ease-in-out infinite alternate;
+  z-index: 0;
+  background-image:
+    radial-gradient(2.5px 2.5px at 47px 88px, rgba(20, 49, 92, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 143px 521px, rgba(30, 74, 138, 0.5), transparent),
+    radial-gradient(2px 2px at 238px 196px, rgba(20, 49, 92, 0.62), transparent),
+    radial-gradient(1px 1px at 311px 444px, rgba(20, 49, 92, 0.45), transparent),
+    radial-gradient(3px 3px at 402px 73px, rgba(20, 49, 92, 0.55), transparent),
+    radial-gradient(1.5px 1.5px at 489px 367px, rgba(30, 74, 138, 0.58), transparent),
+    radial-gradient(2px 2px at 573px 552px, rgba(20, 49, 92, 0.48), transparent),
+    radial-gradient(1px 1px at 668px 141px, rgba(30, 74, 138, 0.42), transparent),
+    radial-gradient(2.5px 2.5px at 754px 478px, rgba(20, 49, 92, 0.66), transparent),
+    radial-gradient(1.5px 1.5px at 841px 268px, rgba(20, 49, 92, 0.52), transparent),
+    radial-gradient(1px 1px at 617px 312px, rgba(30, 74, 138, 0.4), transparent),
+    radial-gradient(2px 2px at 921px 589px, rgba(20, 49, 92, 0.6), transparent),
+    radial-gradient(2px 2px at 29px 381px, rgba(30, 74, 138, 0.55), transparent),
+    radial-gradient(1.5px 1.5px at 117px 64px, rgba(20, 49, 92, 0.48), transparent),
+    radial-gradient(1px 1px at 204px 296px, rgba(20, 49, 92, 0.42), transparent),
+    radial-gradient(2.5px 2.5px at 289px 128px, rgba(20, 49, 92, 0.64), transparent),
+    radial-gradient(1.5px 1.5px at 376px 402px, rgba(30, 74, 138, 0.5), transparent),
+    radial-gradient(1px 1px at 458px 37px, rgba(20, 49, 92, 0.44), transparent),
+    radial-gradient(2px 2px at 533px 238px, rgba(30, 74, 138, 0.57), transparent),
+    radial-gradient(1.5px 1.5px at 601px 351px, rgba(20, 49, 92, 0.46), transparent),
+    radial-gradient(1px 1px at 161px 178px, rgba(30, 74, 138, 0.4), transparent);
+  background-size: 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px;
+  animation: twinkle 3.5s ease-in-out infinite alternate;
+}
+
+/* Estrellas blancas en modo oscuro */
+.dark .stars {
+  background-image:
+    radial-gradient(2px 2px at 61px 122px, #ffffff, transparent),
+    radial-gradient(1px 1px at 157px 487px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 264px 231px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 348px 93px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1px 1px at 431px 409px, #ffffff, transparent),
+    radial-gradient(2px 2px at 529px 571px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 613px 176px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 709px 348px, #ffffff, transparent),
+    radial-gradient(1px 1px at 798px 542px, rgba(255, 255, 255, 0.65), transparent),
+    radial-gradient(1.5px 1.5px at 883px 264px, rgba(255, 255, 255, 0.75), transparent),
+    radial-gradient(1px 1px at 472px 298px, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(2px 2px at 941px 112px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 41px 337px, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(2px 2px at 133px 81px, #ffffff, transparent),
+    radial-gradient(1px 1px at 227px 269px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 312px 149px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 398px 388px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 479px 52px, rgba(255, 255, 255, 0.85), transparent),
+    radial-gradient(1px 1px at 556px 221px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 598px 367px, #ffffff, transparent),
+    radial-gradient(1px 1px at 97px 203px, rgba(255, 255, 255, 0.45), transparent);
+  background-size: 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 977px 613px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px, 641px 449px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px, 173px 89px;
+}
+
+/* ============ CAPA 2: polvo estelar fino a la deriva ============ */
+.stardust {
+  position: fixed;
+  top: -5%;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+  background-image:
+    radial-gradient(1px 1px at 37px 118px, rgba(20, 49, 92, 0.35), transparent),
+    radial-gradient(1px 1px at 149px 472px, rgba(30, 74, 138, 0.28), transparent),
+    radial-gradient(1px 1px at 263px 59px, rgba(20, 49, 92, 0.3), transparent),
+    radial-gradient(1px 1px at 358px 331px, rgba(20, 49, 92, 0.32), transparent),
+    radial-gradient(1px 1px at 447px 508px, rgba(30, 74, 138, 0.26), transparent),
+    radial-gradient(1px 1px at 541px 187px, rgba(20, 49, 92, 0.3), transparent),
+    radial-gradient(1px 1px at 633px 419px, rgba(20, 49, 92, 0.28), transparent),
+    radial-gradient(1px 1px at 729px 96px, rgba(30, 74, 138, 0.3), transparent),
+    radial-gradient(1px 1px at 811px 283px, rgba(20, 49, 92, 0.27), transparent),
+    radial-gradient(1px 1px at 83px 297px, rgba(30, 74, 138, 0.3), transparent),
+    radial-gradient(1px 1px at 196px 41px, rgba(20, 49, 92, 0.26), transparent),
+    radial-gradient(1px 1px at 307px 214px, rgba(20, 49, 92, 0.31), transparent),
+    radial-gradient(1px 1px at 419px 108px, rgba(30, 74, 138, 0.27), transparent),
+    radial-gradient(1px 1px at 488px 322px, rgba(20, 49, 92, 0.29), transparent);
+  background-size: 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 557px 347px, 557px 347px, 557px 347px, 557px 347px, 557px 347px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 211px 127px, 211px 127px, 211px 127px, 211px 127px, 211px 127px;
+  animation: drift 22s linear infinite alternate;
+}
+
+.dark .stardust {
+  background-image:
+    radial-gradient(1px 1px at 37px 118px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 149px 472px, rgba(255, 255, 255, 0.32), transparent),
+    radial-gradient(1px 1px at 263px 59px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 358px 331px, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 447px 508px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 541px 187px, rgba(255, 255, 255, 0.42), transparent),
+    radial-gradient(1px 1px at 633px 419px, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 729px 96px, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 811px 283px, rgba(255, 255, 255, 0.33), transparent),
+    radial-gradient(1px 1px at 83px 297px, rgba(255, 255, 255, 0.38), transparent),
+    radial-gradient(1px 1px at 196px 41px, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(1px 1px at 307px 214px, rgba(255, 255, 255, 0.44), transparent),
+    radial-gradient(1px 1px at 419px 108px, rgba(255, 255, 255, 0.34), transparent),
+    radial-gradient(1px 1px at 488px 322px, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 883px 557px, 557px 347px, 557px 347px, 557px 347px, 557px 347px, 557px 347px;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 211px 127px, 211px 127px, 211px 127px, 211px 127px, 211px 127px;
+}
+
+/* ============ CAPA 3: destellos en cruz (como en los mockups) ============ */
+.sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sparkle {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #14315c;
+  opacity: 0.45;
+  clip-path: polygon(
+    50% 0%, 60% 40%, 100% 50%, 60% 60%,
+    50% 100%, 40% 60%, 0% 50%, 40% 40%
+  );
+  filter: drop-shadow(0 0 4px rgba(20, 49, 92, 0.5));
+  animation: sparkle-twinkle 4s ease-in-out infinite;
+}
+
+.dark .sparkle {
+  background: #ffffff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.9));
+  opacity: 0.85;
+}
+
+/* ============ CAPA 4: estrellas fugaces / estelas ============ */
+.shooting-star {
+  position: absolute;
+  top: 12%;
+  width: 140px;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #14315c 0%, rgba(20, 49, 92, 0) 100%);
+  filter: drop-shadow(0 0 4px rgba(20, 49, 92, 0.6));
+  transform: rotate(-25deg);
+  opacity: 0;
+  animation: shoot 9s linear infinite;
+}
+
+.shooting-star::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  transform: translate(50%, -50%);
+  background: #14315c;
+  box-shadow: 0 0 10px 2px rgba(20, 49, 92, 0.5);
+}
+
+.dark .shooting-star {
+  background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.dark .shooting-star::after {
+  background: #ffffff;
+  box-shadow: 0 0 12px 3px rgba(255, 255, 255, 0.6);
+}
+
+.shooting-star-delayed {
+  top: 32%;
+  animation-delay: 4.5s;
+  animation-duration: 11s;
+  transform: rotate(-25deg) scale(0.7);
+}
+
+/* ============ KEYFRAMES ============ */
+@keyframes nebula-drift-a {
+  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { transform: translate3d(2%, -3%, 0) scale(1.06); opacity: 0.9; }
+}
+
+@keyframes nebula-drift-b {
+  0% { transform: translate3d(0, 0, 0) scale(1.04); opacity: 0.9; }
+  50% { opacity: 1; }
+  100% { transform: translate3d(-3%, 2%, 0) scale(1); opacity: 0.85; }
 }
 
 @keyframes twinkle {
-  0% { opacity: 0.7; }
-  100% { opacity: 1; }
+  0% { opacity: 0.55; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+@keyframes drift {
+  0% { transform: translateY(0); opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-30px); opacity: 0.8; }
+}
+
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 0.7; transform: scale(1.15) rotate(20deg); }
+}
+
+.dark .sparkle {
+  animation-name: sparkle-twinkle-dark;
+}
+
+@keyframes sparkle-twinkle-dark {
+  0%, 100% { opacity: 0.3; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+}
+
+@keyframes shoot {
+  0% { opacity: 0; transform: rotate(-25deg) translateX(0); }
+  3% { opacity: 1; }
+  12% { opacity: 1; transform: rotate(-25deg) translateX(-38vw); }
+  14%, 100% { opacity: 0; transform: rotate(-25deg) translateX(-40vw); }
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #14315c 0%, #1e4a8a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #cfcfcf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============ LUNA (slot debajo del astronauta) ============ */
+.moon-slot {
+  filter: drop-shadow(0 18px 40px rgba(20, 49, 92, 0.25));
+}
+
+.dark .moon-slot {
+  filter: drop-shadow(0 18px 50px rgba(255, 255, 255, 0.12));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nebula::before,
+  .nebula::after,
+  .stars,
+  .stardust,
+  .sparkle,
+  .shooting-star {
+    animation: none;
+  }
 }
