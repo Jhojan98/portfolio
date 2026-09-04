@@ -6,7 +6,7 @@ export default function HeroSection() {
   return (
     <section
       id="inicio"
-      className="relative min-h-svh scroll-mt-20 overflow-hidden"
+      className="relative min-h-svh snap-start scroll-mt-20 overflow-hidden"
     >
       <main className="relative z-10 mx-auto flex min-h-svh w-full max-w-6xl flex-col items-center justify-center gap-12 px-8 pb-16 pt-28 lg:flex-row lg:gap-16">
         <div className="w-full flex-1 max-w-xl text-center lg:text-left">

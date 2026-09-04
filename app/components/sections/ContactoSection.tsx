@@ -33,7 +33,7 @@ export default function ContactoSection() {
   return (
     <section
       id="contacto"
-      className="relative flex min-h-svh scroll-mt-20 flex-col justify-center px-8 pb-16 pt-28"
+      className="relative flex min-h-svh snap-start scroll-mt-20 flex-col justify-center px-8 pb-16 pt-28"
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">

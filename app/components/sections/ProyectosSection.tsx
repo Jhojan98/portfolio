@@ -48,7 +48,7 @@ export default function ProyectosSection() {
   return (
     <section
       id="proyectos"
-      className="relative flex min-h-svh scroll-mt-20 flex-col justify-center px-8 pb-16 pt-28"
+      className="relative flex min-h-svh snap-start scroll-mt-20 flex-col justify-center px-8 pb-16 pt-28"
     >
       <div className="mx-auto w-full max-w-6xl">
         <h1 className="text-4xl lg:text-5xl font-bold mb-2 text-[#14315C] dark:text-white text-center lg:text-left">Mis proyectos</h1>
