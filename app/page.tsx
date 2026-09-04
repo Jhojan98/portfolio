@@ -52,7 +52,7 @@ export default function Home() {
               </div>
             </div>
             <Image
-              src="/Astronaut.webp"
+              src="/Astronaut1.webp"
               alt="Astronauta trabajando en la luna"
               fill
               sizes="(max-width: 640px) 85vw, (max-width: 1024px) 400px, 500px"

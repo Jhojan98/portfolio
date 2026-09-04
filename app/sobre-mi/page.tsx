@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import Image from "next/image";
 import StatsCard from "../components/StatsCard";
 
 const stats = [
@@ -46,12 +47,13 @@ export default function SobreMiPage() {
 
           <div className="flex flex-1 w-full justify-center">
             <div className="relative aspect-[7/8] w-full max-w-[350px]">
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#14315C]/10 to-transparent dark:from-white/10 dark:to-transparent flex items-center justify-center border border-[#14315C]/10 dark:border-white/10">
-                <div className="text-center text-[#14315C]/50 dark:text-gray-500">
-                  <p className="text-sm">Imagen del astronauta</p>
-                  <p className="text-xs mt-1">350x400px</p>
-                </div>
-              </div>
+              <Image
+                src="/Astronaut2.webp"
+                alt="Astronauta flotando en el espacio"
+                fill
+                sizes="(max-width: 400px) 85vw, 350px"
+                className="rounded-3xl border border-[#14315C]/10 object-cover dark:border-white/10"
+              />
             </div>
           </div>
         </div>
