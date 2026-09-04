@@ -46,12 +46,12 @@ export default function ProyectosPage() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <div className="relative min-h-screen pt-24 pb-16 px-8 lg:px-24">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl lg:text-5xl font-bold mb-2 text-[#14315C] dark:text-white">Mis proyectos</h1>
-        <div className="w-16 h-1 bg-[#14315C] dark:bg-white rounded-full mb-8" />
+    <div className="relative flex min-h-svh flex-col justify-center px-8 pb-16 pt-28">
+      <div className="mx-auto w-full max-w-6xl">
+        <h1 className="text-4xl lg:text-5xl font-bold mb-2 text-[#14315C] dark:text-white text-center lg:text-left">Mis proyectos</h1>
+        <div className="w-16 h-1 bg-[#14315C] dark:bg-white rounded-full mb-8 mx-auto lg:mx-0" />
 
-        <div className="flex flex-wrap gap-3 mb-10">
+        <div className="flex flex-wrap justify-center gap-3 mb-10 lg:justify-start">
           {categories.map((cat) => (
             <button
               key={cat}

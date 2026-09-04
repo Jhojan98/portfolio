@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 interface ProjectCardProps {
   title: string;
@@ -12,7 +13,13 @@ export default function ProjectCard({ title, description, tags, image }: Project
     <div className="group relative rounded-2xl bg-white dark:bg-white/5 border border-[#14315C]/10 dark:border-white/10 overflow-hidden hover:border-[#14315C]/40 dark:hover:border-white/40 transition-all shadow-sm dark:shadow-none">
       <div className="relative h-48 bg-gradient-to-br from-[#14315C]/10 to-transparent dark:from-white/10 dark:to-transparent flex items-center justify-center">
         {image ? (
-          <img src={image} alt={title} className="w-full h-full object-cover" />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+          />
         ) : (
           <div className="text-[#14315C]/50 dark:text-gray-500 text-sm">Imagen del proyecto</div>
         )}

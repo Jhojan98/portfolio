@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Orbit } from "lucide-react";
+import PlanetIcon from "./PlanetIcon";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 bg-[#E9F3FB]/80 dark:bg-black/80 backdrop-blur-md border-b border-[#14315C]/10 dark:border-white/10 transition-colors">
       <Link href="/" className="flex items-center gap-2 text-[#14315C] dark:text-white hover:text-[#1E4A8A] dark:hover:text-gray-300 transition-colors">
-        <Orbit className="w-8 h-8" />
+        <PlanetIcon className="w-8 h-8" />
       </Link>
 
       <div className="hidden md:flex items-center gap-8">

@@ -31,12 +31,12 @@ const socialLinks = [
 
 export default function ContactoPage() {
   return (
-    <div className="relative min-h-screen pt-24 pb-16 px-8 lg:px-24">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          <div className="flex-1">
+    <div className="relative flex min-h-svh flex-col justify-center px-8 pb-16 pt-28">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          <div className="flex-1 text-center lg:text-left">
             <h1 className="text-4xl lg:text-5xl font-bold mb-2 text-[#14315C] dark:text-white">Hablemos</h1>
-            <div className="w-16 h-1 bg-[#14315C] dark:bg-white rounded-full mb-8" />
+            <div className="w-16 h-1 bg-[#14315C] dark:bg-white rounded-full mb-8 mx-auto lg:mx-0" />
 
             <p className="text-[#14315C]/80 dark:text-gray-300 leading-relaxed mb-10">
               ¿Tienes un proyecto en mente o quieres colaborar conmigo?
@@ -50,7 +50,7 @@ export default function ContactoPage() {
                   href={item.href}
                   target={item.href.startsWith("http") ? "_blank" : undefined}
                   rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="flex items-center gap-4 text-[#14315C]/80 dark:text-gray-300 hover:text-[#14315C] dark:hover:text-white transition-colors group"
+                  className="flex items-center justify-center gap-4 text-[#14315C]/80 dark:text-gray-300 hover:text-[#14315C] dark:hover:text-white transition-colors group lg:justify-start"
                 >
                   <item.icon className="w-5 h-5 text-[#14315C]/50 dark:text-gray-500 group-hover:text-[#14315C] dark:group-hover:text-white transition-colors" />
                   <span>{item.text}</span>
@@ -58,7 +58,7 @@ export default function ContactoPage() {
               ))}
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex justify-center gap-4 lg:justify-start">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
@@ -74,8 +74,8 @@ export default function ContactoPage() {
             </div>
           </div>
 
-          <div className="flex-1 flex justify-center">
-            <div className="relative w-[350px] h-[400px]">
+          <div className="flex flex-1 w-full justify-center">
+            <div className="relative aspect-[7/8] w-full max-w-[350px]">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#14315C]/10 to-transparent dark:from-white/10 dark:to-transparent flex items-center justify-center border border-[#14315C]/10 dark:border-white/10">
                 <div className="text-center text-[#14315C]/50 dark:text-gray-500">
                   <p className="text-sm">Imagen del astronauta</p>
